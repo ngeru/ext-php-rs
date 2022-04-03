@@ -50,6 +50,8 @@ pub mod prelude {
     pub use crate::php_println;
     pub use crate::php_startup;
     pub use crate::types::ZendCallable;
+    pub use crate::wrap_constant;
+    pub use crate::wrap_function;
     pub use crate::ZvalConvert;
 }
 
@@ -709,3 +711,5 @@ pub use ext_php_rs_derive::ZvalConvert;
 /// The `vectorcall` ABI is currently only supported on Windows with nightly
 /// Rust and the `abi_vectorcall` feature enabled.
 pub use ext_php_rs_derive::zend_fastcall;
+
+pub use ext_php_rs_derive::wrap_function;
