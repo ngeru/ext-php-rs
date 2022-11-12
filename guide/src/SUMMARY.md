@@ -25,7 +25,6 @@
   - [Closure](./types/closure.md)
 - [Macros](./macros/index.md)
   - [Module](./macros/module.md)
-  - [Module Startup Function](./macros/module_startup.md)
   - [Function](./macros/function.md)
   - [Classes](./macros/classes.md)
     - [`impl`s](./macros/impl.md)
