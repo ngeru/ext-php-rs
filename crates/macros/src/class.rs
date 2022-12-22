@@ -62,6 +62,10 @@ pub fn parser(args: AttributeArgs, mut input: syn::ItemStruct) -> Result<TokenSt
     let mut class_attrs = ClassAttrs::default();
     class_attrs.parse(&mut input.attrs)?;
 
+    if !input.generics.params.is_empty() {
+        bail!(input.generics => "Generic type or lifetime parameters are not allowed in PHP classes.");
+    }
+
     let fields = match &mut input.fields {
         syn::Fields::Named(fields) => parse_fields(fields.named.iter_mut())?,
         _ => vec![],
