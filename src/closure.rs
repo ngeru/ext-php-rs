@@ -151,6 +151,9 @@ impl Closure {
 
 impl RegisteredClass for Closure {
     const CLASS_NAME: &'static str = "RustClosure";
+    const BUILDER_MODIFIER: Option<fn(ClassBuilder) -> ClassBuilder> = None;
+    const EXTENDS: Option<fn() -> &'static crate::zend::ClassEntry> = None;
+    const IMPLEMENTS: &'static [fn() -> &'static crate::zend::ClassEntry] = &[];
 
     fn get_metadata() -> &'static ClassMetadata<Self> {
         &CLOSURE_META
@@ -158,6 +161,19 @@ impl RegisteredClass for Closure {
 
     fn get_properties<'a>() -> HashMap<&'static str, Property<'a, Self>> {
         HashMap::new()
+    }
+
+    fn method_builders() -> Vec<(FunctionBuilder<'static>, MethodFlags)> {
+        vec![]
+    }
+
+    fn constructor() -> Option<crate::class::ConstructorMeta<Self>> {
+        // Closure cannot be constructed from PHP land
+        None
+    }
+
+    fn constants() -> &'static [(&'static str, &'static dyn crate::convert::IntoZvalDyn)] {
+        &[]
     }
 }
 
