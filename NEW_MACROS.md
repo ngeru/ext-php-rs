@@ -135,3 +135,14 @@ pub fn get_module(module: ModuleBuilder) -> ModuleBuilder {
     module
 }
 ```
+
+The arguments passed to the function are:
+
+- `ty` - The type of the module
+  - If 1, the module was loaded as "persistent" like a regular extension
+  - If 2, the module was loaded temporarily such as via the [`dl()`] method
+    (very uncommon)
+- `mod_num` - The module number used as an identifier by the interpreter. This
+  number increments for each extension loaded
+
+[`dl()`]: https://www.php.net/manual/en/function.dl.php
