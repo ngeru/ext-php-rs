@@ -66,9 +66,9 @@ impl TestClass {
     }
 
     pub fn builder_pattern(
-        self_: &mut ZendClassObject<TestClass>,
+        this: &mut ZendClassObject<TestClass>,
     ) -> &mut ZendClassObject<TestClass> {
-        dbg!(self_)
+        dbg!(this)
     }
 }
 

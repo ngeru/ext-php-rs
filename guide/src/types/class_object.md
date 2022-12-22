@@ -25,13 +25,13 @@ pub struct Example {
 
 #[php_impl]
 impl Example {
-    // ext-php-rs treats the method as associated due to the `self_` argument.
-    // The argument _must_ be called `self_`.
+    // ext-php-rs treats the method as associated due to the `this` argument.
+    // The argument _must_ be called `this`.
     pub fn builder_pattern(
-        self_: &mut ZendClassObject<Example>,
+        this: &mut ZendClassObject<Example>,
     ) -> &mut ZendClassObject<Example> {
-        // do something with `self_`
-        self_ 
+        // do something with `this`
+        this 
     }
 }
 

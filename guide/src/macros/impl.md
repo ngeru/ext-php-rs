@@ -20,7 +20,7 @@ consuming `self` parameter. Static methods can omit this `self` parameter.
 
 To access the underlying Zend object, you can take a reference to a
 `ZendClassObject<T>` in place of the self parameter, where the parameter must
-be named `self_`. This can also be used to return a reference to `$this`.
+be named `this`. This can also be used to return a reference to `$this`.
 
 By default, all methods are renamed in PHP to the camel-case variant of the Rust
 method name. This can be changed on the `#[php_impl]` attribute, by passing one
@@ -144,8 +144,8 @@ impl Human {
         );
     }
 
-    pub fn get_raw_obj(self_: &mut ZendClassObject<Human>) -> &mut ZendClassObject<Human> {
-        dbg!(self_)
+    pub fn get_raw_obj(this: &mut ZendClassObject<Human>) -> &mut ZendClassObject<Human> {
+        dbg!(this)
     }
 
     pub fn get_max_age() -> i32 {

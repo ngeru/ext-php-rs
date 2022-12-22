@@ -288,10 +288,10 @@ impl<'a> ParsedImpl<'a> {
                                 .args
                                 .typed
                                 .first()
-                                .map(|arg| arg.name == "self_")
+                                .map(|arg| arg.name == "this")
                                 .unwrap_or_default()
                             {
-                                // `self_: &[mut] ZendClassObject<Self>`
+                                // `this: &[mut] ZendClassObject<Self>`
                                 // Need to remove arg from argument list
                                 func.args.typed.pop();
                                 MethodReceiver::ZendClassObject
