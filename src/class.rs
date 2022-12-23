@@ -36,6 +36,18 @@ pub trait RegisteredClass: Sized + 'static {
     /// PHP flags applied to the class.
     const FLAGS: ClassFlags = ClassFlags::empty();
 
+    /// Retrieve the class entry for the class.
+    ///
+    /// # Panics
+    ///
+    /// Panics if the class entry has not been set inside the corresponding
+    /// class metadata. This usually indicates the class has not been
+    /// initialised yet.
+    #[inline]
+    fn get_class_entry() -> &'static ClassEntry {
+        Self::get_metadata().ce()
+    }
+
     /// Returns a reference to the class metadata, which stores the class entry
     /// and handlers.
     ///

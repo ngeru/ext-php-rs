@@ -50,6 +50,10 @@ impl TestClass {
     }
 }
 
+#[php_class]
+#[extends(TestClass::get_class_entry)]
+pub struct TestExtension {}
+
 #[php_function]
 pub fn new_class() -> TestClass {
     TestClass { a: 1, b: 2 }
@@ -89,6 +93,7 @@ fn startup(ty: i32, mod_num: i32) -> i32 {
 pub fn get_module(module: ModuleBuilder) -> ModuleBuilder {
     module
         .class::<TestClass>()
+        .class::<TestExtension>()
         .function(wrap_function!(hello_world))
         .function(wrap_function!(new_class))
         .function(wrap_function!(get_zval_convert))

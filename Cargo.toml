@@ -34,7 +34,6 @@ native-tls = "0.2"
 zip = "0.6"
 
 [features]
-default = ["closure"]
 closure = []
 
 [workspace]

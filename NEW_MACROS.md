@@ -45,6 +45,10 @@ pub struct TestClass {
     b: i32,
 }
 
+#[php_class]
+#[extends(TestClass::get_class_entry)]
+pub struct ExampleClassThatInheritsTestClass {}
+
 #[php_impl]
 impl TestClass {
     #[rename("NEW_CONSTANT_NAME")]
